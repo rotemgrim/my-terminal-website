@@ -1,12 +1,12 @@
 const config = {
-    
+
     prompt: {
         name: `<c class="brightRed">guest</c>`,
         at: `<c class="white"> @ </c>`,
         host: `<c class="green">great.engineer</c> `,
         separator: `<c class="white">$</c>`,
     },
-    
+
     welcome: `
 
 <c class="brightRed">  ⠀⠀⠀⢠⡀                         </c>
@@ -27,6 +27,56 @@ const config = {
 <c class="brightGreen">For a list of available commands, type <c class="cyan glow">'help'</c>.</c>
 <br/>`,
 
-};
+    commands: {
 
-return config;
+        whois: {
+            description: "Who is Rotem Grimberg",
+            help: "You just type whois and get my life story, what help do you need?!",
+            handler: "write",
+            data: `<br/>
+            I'm Rotem Grimberg, a full-stack developer, and a tech enthusiast.
+            I have a passion for creating and learning new things, and I'm always looking for new challenges.
+            I have a BSc in Computer Science and I'm currently working as a frontend architect at a startup company.
+            <br/><br/>`
+        },
+
+        projects: {
+            description: "View coding projects",
+            help: "View coding projects",
+            handler: "many",
+            data: [
+                {
+                    handler: "idle",
+                },
+                {
+                    handler: "write",
+                    data: "<br/>loading projects, please wait...</br>",
+                    delay: 1000,
+                },
+                {
+                    handler: "write",
+                    data: `<br/>Found! redirecting to <a class="brightRed glow"><a href="github.com/rotemgrim">GitHub</a></c></br>`,
+                    delay: 1000,
+                },
+                {
+                    handler: "newTab",
+                    data: "https://github.com/rotemgrim/",
+                    delay: 2000,
+                },
+                {
+                    handler: "setPrompt",
+                }
+            ]
+        },
+
+        banner: {
+            description: "prints the terminal welcome banner",
+            handler: "banner",
+        },
+
+        su: {
+            description: "switch the current user",
+            handler: "setPromptName",
+        },
+    }
+};
