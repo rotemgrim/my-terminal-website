@@ -28,3 +28,5 @@ const config = {
 <br/>`,
 
 };
+
+return config;
